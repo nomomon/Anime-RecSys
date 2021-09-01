@@ -23,6 +23,79 @@ Matrix factorization algorithms work by decomposing the user-item interaction ma
 
 We are never going to actually create it because this is an enormous sparse matrix, however it is good to imagine it like that.
 
+<details>
+<summary>
+<b>Making the tf.Model</b>
+</summary>
+ 
+Instead of user and item matrices, we will use embeddings, which will map each user and anime to a vector. In addition, we'll add a bias to each user and anime.
+
+```python
+class MatrixFactorizationModel(tf.keras.Model):
+    def __init__(self, num_users, num_items, embedding_dim):
+        super(MatrixFactorizationModel, self).__init__()
+        
+        self.embedding_dim = embedding_dim
+        
+        self.user_embeddings = tf.keras.layers.Embedding(num_users, embedding_dim)
+        self.item_embeddings = tf.keras.layers.Embedding(num_items, embedding_dim)
+
+        self.user_biases = tf.keras.layers.Embedding(num_users, 1)
+        self.item_biases = tf.keras.layers.Embedding(num_items, 1)
+
+        self.bias = tf.Variable(tf.zeros([1]))
+
+        self.dropout = tf.keras.layers.Dropout(.5)
+
+    def call(self, inputs, training = False):
+        ...
+```
+
+It is a good practice to place a dropout layer over embedding layers to prevent overfitting and in turn, making features more robust. To compute the predicted rating I use the formula `prediction = (user_embedding + user_bias) * (item_embedding + item_bias) + bias`.
+
+```python
+class MatrixFactorizationModel(tf.keras.Model):
+    def __init__(self, num_users, num_items, embedding_dim):
+    ...
+    def call(self, inputs, training = False):
+        user_ids = inputs[:, 0]
+        item_ids = inputs[:, 1]
+
+        user_embedding = self.user_embeddings(user_ids) + self.user_biases(user_ids)
+        item_embedding = self.item_embeddings(item_ids) + self.item_biases(item_ids)
+
+        if training:
+            user_embedding = self.dropout(user_embedding, training = training)
+            item_embedding = self.dropout(item_embedding, training = training)
+
+        user_embedding = tf.reshape(user_embedding, [-1, self.embedding_dim])
+        item_embedding = tf.reshape(item_embedding, [-1, self.embedding_dim])
+
+        dot = tf.keras.layers.Dot(axes=1)([user_embedding, item_embedding]) + self.bias
+
+        return dot
+```
+
+To compile the model I used Adam optimizer, MSE as the loss and RMSE as a metric to keep track of. The model is ran [eagerly](https://www.tensorflow.org/guide/eager), to allow such model definition.
+
+```python
+mf_model = MatrixFactorizationModel(num_users = num_users, 
+                                    num_items = num_anime, 
+                                    embedding_dim = 64)
+
+mf_model.compile(
+    optimizer = tf.keras.optimizers.Adam(),
+    loss = tf.keras.losses.MeanSquaredError(),
+    metrics = [
+        tf.keras.metrics.RootMeanSquaredError("RMSE")
+    ],
+    run_eagerly = True
+)
+```
+</details>
+
 ### Neural Network
 
-### Comparing the Methods
+### Comparing the Models
+
+
