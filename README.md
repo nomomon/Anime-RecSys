@@ -98,4 +98,7 @@ mf_model.compile(
 
 ### Comparing the Models
 
-
+| Model                | val_loss | RMSE   |
+|----------------------|----------|--------|
+| Neural Network       | 1.9271   | 1.3882 |
+| Matrix Factorization | 3.0598   | 1.7492 |
