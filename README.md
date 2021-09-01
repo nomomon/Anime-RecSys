@@ -96,6 +96,76 @@ mf_model.compile(
 
 ### Neural Network
 
+
+<details>
+<summary>
+<b>Making the tf.Model</b>
+</summary>
+
+```python
+class NeuralNetworkModel(tf.keras.Model):
+    def __init__(self, num_users, num_items, embedding_dim):
+        super(NeuralNetworkModel, self).__init__()
+        
+        self.embedding_dim = embedding_dim
+        
+        self.user_embeddings = tf.keras.layers.Embedding(num_users, embedding_dim)
+        self.item_embeddings = tf.keras.layers.Embedding(num_items, embedding_dim)
+
+        self.dense1 = tf.keras.layers.Dense(64, activation='relu')
+        self.dense2 = tf.keras.layers.Dense(1, activation='relu')
+
+        self.concat = tf.keras.layers.Concatenate()
+        self.dropout = tf.keras.layers.Dropout(.5)
+
+    def call(self, inputs, training = False):
+        ...
+```
+
+```python
+class NeuralNetworkModel(tf.keras.Model):
+    def __init__(self, num_users, num_items, embedding_dim):
+    ...
+    def call(self, inputs, training = False):
+        user_ids = inputs[:, 0]
+        item_ids = inputs[:, 1]
+
+        user_embedding = self.user_embeddings(user_ids)
+        item_embedding = self.item_embeddings(item_ids)
+
+        if training:
+            user_embedding = self.dropout(user_embedding, training = training)
+            item_embedding = self.dropout(item_embedding, training = training)
+
+        user_embedding = tf.reshape(user_embedding, [-1, self.embedding_dim])
+        item_embedding = tf.reshape(item_embedding, [-1, self.embedding_dim])
+
+        x = self.concat([user_embedding, item_embedding])
+        x = self.dense1(x)
+        x = self.dense2(x)
+
+        return x
+```
+
+Similarly to `MatrixFactorization`, to compile the model I used Adam optimizer, MSE as the loss and RMSE as a metric to keep track of. The model is ran [eagerly](https://www.tensorflow.org/guide/eager), to allow such model definition.
+
+```python
+nn_model = NeuralNetworkModel(num_users = num_users, 
+                              num_items = num_anime, 
+                              embedding_dim = 64)
+
+nn_model.compile(
+    optimizer = tf.keras.optimizers.Adam(),
+    loss = tf.keras.losses.MeanSquaredError(),
+    metrics = [
+        tf.keras.metrics.RootMeanSquaredError("RMSE")
+    ],
+    run_eagerly = True
+)
+```
+</details>
+
+
 ### Comparing the Models
 
 | Model                | val_loss | RMSE   |
