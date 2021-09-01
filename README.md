@@ -8,8 +8,8 @@ Goal of this repo is to document the development user-item recommendation system
 [Colab]()
 
 One of the ways to recommend items is by predicting _what rating will a user put on an item_, and showing the ones that user hasn't seen and have the highest rating. There are two approaches to answer this question:
-- **Colaborative filtering** – method of making predictions about the interests of a user by collecting preferences or taste information from many users.
-- **Content-based filtering** – method of making predictions based on a description of the item and a profile of the user's preferences.
+- **Colaborative filtering** – methods of making predictions about the interests of a user by collecting preferences or taste information from many users.
+- **Content-based filtering** – methods of making predictions based on a description of the item and a profile of the user's preferences.
 
 Right now we will focus only on colaborative filtering.
 
@@ -21,7 +21,7 @@ Matrix factorization algorithms work by decomposing the user-item interaction ma
  <img width="500" src="images/matrix factorization.png" />
 </p>
 
-We are never going to actually create it because this is an enormous sparse matrix, however it is good to imaginge it like that.
+We are never going to actually create it because this is an enormous sparse matrix, however it is good to imagine it like that.
 
 ### Neural Network
 
