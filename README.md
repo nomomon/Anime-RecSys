@@ -15,6 +15,14 @@ Right now we will focus only on colaborative filtering.
 
 ### Matrix Factorization
 
+Matrix factorization algorithms work by decomposing the user-item interaction matrix into the product of two lower dimensionality rectangular matrices. For example, using the anime rating matrix we can try to learn the user and anime matrices, such that each row and column represent a user and an anime respectively.
+
+<p align="center">
+ <img width="500" src="images/matrix factorization.png" />
+</p>
+
+We are never going to actually create it because this is an enormous sparse matrix, however it is good to imaginge it like that.
+
 ### Neural Network
 
 ### Comparing the Methods
