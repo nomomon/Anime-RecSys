@@ -96,6 +96,8 @@ mf_model.compile(
 
 ### Neural Network
 
+The neural network will try to learn user and item embeddings that model user-item interactions.
+
 Model sctructure is quite similar to that of `MatrixFactorization`, however now we will concatenate user and anime embeddings and pass them through two dense layers. Last layer has only one node and its output will represent the predicted rating.
 
 <p align="center">
