@@ -96,6 +96,7 @@ mf_model.compile(
 
 ### Neural Network
 
+Model sctructure is quite similar to that of `MatrixFactorization`, however now we will concatenate user and anime embeddings and pass them through two dense layers. Last layer has only one node and its output will represent the predicted rating.
 
 <p align="center">
  <img height="300" src="images/neural network.png" />
