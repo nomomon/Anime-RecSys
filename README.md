@@ -97,6 +97,10 @@ mf_model.compile(
 ### Neural Network
 
 
+<p align="center">
+ <img height="300" src="images/neural network.png" />
+</p>
+
 <details>
 <summary>
 <b>Making the tf.Model</b>
