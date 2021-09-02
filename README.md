@@ -166,7 +166,7 @@ nn_model.compile(
 </details>
 
 
-### Comparing the Models
+### Comparing Model Performances
 
 | Model                | val_loss | RMSE   |
 |----------------------|----------|--------|
