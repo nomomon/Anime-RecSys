@@ -3,9 +3,9 @@
 Goal of this repo is to document the development user-item recommendation systems, and learn and compare different methods of achiving that. Dataset used is [Anime Recommendation Database 2020](https://www.kaggle.com/hernan4444/anime-recommendation-database-2020) from Kaggle.
 
 ## Predicting User-Anime Ratings
-[GitHub](/User_Anime_Ranting_Predictions.ipynb)
+[GitHub](/User_Anime_Rating_Predictions.ipynb)
  | 
-[Colab](https://colab.research.google.com/github/nomomon/anime-recommendations/blob/master/User_Anime_Ranting_Predictions.ipynb)
+[Colab](https://colab.research.google.com/github/nomomon/anime-recommendations/blob/master/User_Anime_Rating_Predictions.ipynb)
 
 One of the ways to recommend items is by predicting _what rating will a user put on an item_, and showing the ones that user hasn't seen and have the highest rating. There are two approaches to answer this question:
 - **Colaborative filtering** – methods of making predictions about the interests of a user by collecting preferences or taste information from many users.
