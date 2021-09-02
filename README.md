@@ -192,3 +192,12 @@ nn_model.compile(
 Being able to predict what rating will a user place on an anime is nice. However, our goal is to _recommend anime_. So, basically, we can rephrase our question to _will a user interact positivly with this anime?_.
 
 Let's define positive interactions as, user liked the anime, watched it all, and placed a good rating, and negative user dropped the anime, placed a low rating.
+
+Model structures are exactly the same, except there is a sigmoid function applied to the output.
+
+### Comparing Model Performances
+
+| Model                | val_loss | RMSE   |
+|----------------------|----------|--------|
+| Neural Network       | 0.2502   | 0.2189 |
+| Matrix Factorization | 0.2795   | 0.2306 |
