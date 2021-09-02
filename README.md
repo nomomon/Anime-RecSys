@@ -109,6 +109,8 @@ Model sctructure is quite similar to that of `MatrixFactorization`, however now 
 <b>Making the tf.Model</b>
 </summary>
 
+Let's define the user and item embeddings and the two dense layers. I used `relu` activation on the output layer because predictions non-negative numbers.
+ 
 ```python
 class NeuralNetworkModel(tf.keras.Model):
     def __init__(self, num_users, num_items, embedding_dim):
@@ -129,6 +131,8 @@ class NeuralNetworkModel(tf.keras.Model):
         ...
 ```
 
+We'll take user and item embeddings, apply dropout after each, and concatenate them. Then we'll pass them through two dense layers.
+ 
 ```python
 class NeuralNetworkModel(tf.keras.Model):
     def __init__(self, num_users, num_items, embedding_dim):
