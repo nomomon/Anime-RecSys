@@ -183,3 +183,9 @@ nn_model.compile(
 |----------------------|----------|--------|
 | Neural Network       | 1.9271   | 1.3882 |
 | Matrix Factorization | 3.0598   | 1.7492 |
+
+## Predicting User-Anime Interactions
+
+Being able to predict what rating will a user place on an anime is nice. However, our goal is to _recommend anime_. So, basically, we can rephrase our question to _will a user interact positivly with this anime?_.
+
+Let's define positive interactions as, user liked the anime, watched it all, and placed a good rating, and negative user dropped the anime, placed a low rating.
