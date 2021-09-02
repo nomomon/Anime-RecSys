@@ -25,7 +25,7 @@ We are [never actually going to create this rating matrix](https://www.youtube.c
 
 <details>
 <summary>
-<b>Making the tf.Model</b>
+<b>Making the tf.keras.Model</b>
 </summary>
  
 Instead of user and item matrices, we will use embeddings, which will map each user and anime to a vector. In addition, we'll add a bias to each user and anime.
@@ -106,7 +106,7 @@ Model sctructure is quite similar to that of `MatrixFactorization`, however now 
 
 <details>
 <summary>
-<b>Making the tf.Model</b>
+<b>Making the tf.keras.Model</b>
 </summary>
 
 Let's define the user and item embeddings and the two dense layers. I used `relu` activation on the output layer because predictions non-negative numbers.
