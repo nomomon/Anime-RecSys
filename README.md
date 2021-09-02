@@ -21,7 +21,7 @@ Matrix factorization algorithms work by decomposing the user-item interaction ma
  <img width="500" src="images/matrix factorization.png" />
 </p>
 
-We are never going to actually create it because this is an enormous sparse matrix, however it is good to imagine it like that.
+We are never going to actually create it because this rating matrix, however it is better to imagine it like that.
 
 <details>
 <summary>
