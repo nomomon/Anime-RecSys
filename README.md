@@ -216,6 +216,9 @@ def transform(df):
 
 ## Hybrid (Predicting User-Anime Ratings and Interactions)
 
+[![](https://img.shields.io/badge/-Open%20in%20GitHub-157aba?style=flat&logo=GitHub&logoColor=white&labelColor=5c5c5c)](/User_Anime_Hybrid_Predictions.ipynb)
+[![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nomomon/anime-recommendations/blob/master/User_Anime_Hybrid_Predictions.ipynb)
+
 IMHO, a model that can do multiple tasks can perform them on a similar level, if not better.
 
 
