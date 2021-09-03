@@ -177,13 +177,6 @@ nn_model.compile(
 </details>
 
 
-### Comparing Model Performances
-
-| Model                | val_loss | RMSE   |
-|----------------------|----------|--------|
-| Neural Network       | 1.9271   | 1.3882 |
-| Matrix Factorization | 3.0598   | 1.7492 |
-
 ## Predicting User-Anime Interactions
 
 [![](https://img.shields.io/badge/-Open%20in%20GitHub-157aba?style=flat&logo=GitHub&logoColor=white&labelColor=5c5c5c)](/User_Anime_Interactions_Predictions.ipynb)
@@ -220,9 +213,26 @@ def transform(df):
     df.rename(columns = {'watching_status': 'interaction'}, inplace = True)
 ```
 
-### Comparing Model Performances
+
+## Hybrid (Predicting User-Anime Ratings and Interactions)
+
+IMHO, a model that can do multiple tasks can perform them on a similar level, if not better.
+
+
+## Comparing Model Performances
+
+### Predicting Ratings
 
 | Model                | val_loss | RMSE   |
 |----------------------|----------|--------|
+| Neural Network       | 1.9271   | 1.3882 |
+| Hybrid NN            | 1.9339   | 1.3906 |
+| Matrix Factorization | 3.0598   | 1.7492 |
+
+### Predicting Interactions
+
+| Model                | val_loss | RMSE   |
+|----------------------|----------|--------|
+| Hybrid NN            | 0.1156   | 0.1664 |
 | Neural Network       | 0.2502   | 0.2189 |
 | Matrix Factorization | 0.2795   | 0.2306 |
