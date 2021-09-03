@@ -191,9 +191,25 @@ nn_model.compile(
 
 Being able to predict what rating will a user place on an anime is nice. However, our goal is to _recommend anime_. So, basically, we can rephrase our question to _will a user interact positivly with this anime?_.
 
-Let's define positive interactions as, user liked the anime, watched it all, and placed a good rating, and negative user dropped the anime, placed a low rating.
+Let's define positive and negative interactions as
+- ` 1 `: user liked the anime, watched it all, and placed a good rating;
+- ` 0 `: user dropped the anime, placed a low rating.
 
-Model structures are exactly the same, except there is a sigmoid function applied to the output.
+Now, we can use exactly the same model structures, except with a sigmoid function applied to the output.
+
+### Dataset
+In our anime dataset we don't have a positive-negative interaction column, but we can make it ourselves!
+
+```python
+def transform(df):
+    df.loc[df["watching_status"] == 6, ["watching_status"]] = 1.0  # Plan to watch
+    df.loc[df["watching_status"] == 2, ["watching_status"]] = 1.0  # Completed
+    df.loc[df["watching_status"] == 1, ["watching_status"]] = 0.5  # Currently watching
+    df.loc[df["watching_status"] == 3, ["watching_status"]] = 0.5  # On hold
+    df.loc[df["watching_status"] == 4, ["watching_status"]] = 0.0  # Dropped
+
+    df.rename(columns = {'watching_status': 'interaction'}, inplace = True)
+```
 
 ### Comparing Model Performances
 
