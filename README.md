@@ -189,7 +189,7 @@ nn_model.compile(
 [![](https://img.shields.io/badge/-Open%20in%20GitHub-157aba?style=flat&logo=GitHub&logoColor=white&labelColor=5c5c5c)](/User_Anime_Interactions_Predictions.ipynb)
 [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nomomon/anime-recommendations/blob/master/User_Anime_Interactions_Predictions.ipynb)
 
-Being able to predict what rating will a user place on an anime is nice. However, our goal is to _recommend anime_. So, basically, we can rephrase our question to _will a user interact positivly with this anime?_.
+Being able to predict what rating will a user place on an anime is nice. However, our goal is to _recommend anime_. So, basically, we can rephrase our question to _will a user have a positive interaction with an anime?_
 
 Let's define positive and negative interactions as
 - ` 1 `: user liked the anime, watched it all, and placed a good rating;
