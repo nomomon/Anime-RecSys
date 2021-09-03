@@ -200,6 +200,15 @@ Now, we can use exactly the same model structures, except with a sigmoid functio
 ### Dataset
 In our anime dataset we don't have a positive-negative interaction column, but we can make it ourselves!
 
+`watching_status` values:
+```
+1: Currently Watching
+2: Completed
+3: On Hold
+4: Dropped
+6: Plan to Watch
+```
+
 ```python
 def transform(df):
     df.loc[df["watching_status"] == 6, ["watching_status"]] = 1.0  # Plan to watch
