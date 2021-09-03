@@ -1,6 +1,6 @@
 # Anime Recommendations
 
-Goal of this repo is to document the development user-item recommendation systems, and learn and compare different methods of achiving that. Dataset used is [Anime Recommendation Database 2020](https://www.kaggle.com/hernan4444/anime-recommendation-database-2020) from Kaggle.
+Goal of this repo is to document the development of user-item recommendation systems, and learn and compare different methods of achiving that. Dataset used is [Anime Recommendation Database 2020](https://www.kaggle.com/hernan4444/anime-recommendation-database-2020) from Kaggle.
 
 ## Predicting User-Anime Ratings
 
