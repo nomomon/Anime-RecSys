@@ -2,6 +2,8 @@
 
 Goal of this repo is to document the development of user-item recommendation systems, and compare different methods. Dataset used is [Anime Recommendation Database 2020](https://www.kaggle.com/hernan4444/anime-recommendation-database-2020) from Kaggle.
 
+<!-- Trained model weights can be downloaded from [Drive](https://drive.google.com/drive/folders/1lUwT4v3Uji4JCMmjU4_qEpBQ2yl8HrYc) -->
+
 There are two most common ways of making recommending:
 - **Colaborative filtering** – methods of making predictions about the interests of a user by collecting preferences or taste information from many users.
 - **Content-based filtering** – making predictions based on a description of the item and a profile of the user's preferences.
