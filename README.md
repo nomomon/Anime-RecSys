@@ -195,7 +195,9 @@ Let's define positive and negative interactions as
 Now, we can use exactly the same model structures, except with a sigmoid function applied to the output.
 
 ### Dataset
-In our anime dataset we don't have a positive-negative interaction column, but we can make it ourselves!
+In our anime dataset we don't have a positive-negative interaction column, so we will make it ourselves. 
+
+We'll leave only Completed and Dropped columns. All the anime rated less than or equal 5 or that were dropped, will be considered negative interactions. Rest are positive.
 
 `watching_status` values:
 ```
@@ -207,14 +209,21 @@ In our anime dataset we don't have a positive-negative interaction column, but w
 ```
 
 ```python
+interactions = interactions[interactions["watching_status"] <= 4]  # leave only
+interactions = interactions[interactions["watching_status"] >= 2]  # watching_status that
+interactions = interactions[interactions["watching_status"] != 3]  # are 2 or 4
+
 def transform(df):
-    df.loc[df["watching_status"] == 1, ["watching_status"]] = 0.5  # Currently watching
-    df.loc[df["watching_status"] == 2, ["watching_status"]] = 1.0  # Completed
-    df.loc[df["watching_status"] == 3, ["watching_status"]] = 0.5  # On hold
-    df.loc[df["watching_status"] == 4, ["watching_status"]] = 0.0  # Dropped
-    df.loc[df["watching_status"] == 6, ["watching_status"]] = 1.0  # Plan to watch
+    df.loc[df["rating"] <= 5, ["watching_status"]] = 0.0
+    df.loc[df["watching_status"] == 2, ["watching_status"]] = 1.0
+    df.loc[df["watching_status"] == 4, ["watching_status"]] = 0.0
 
     df.rename(columns = {'watching_status': 'interaction'}, inplace = True)
+
+transform(interactions)
+
+good = interactions['user_id'].value_counts().loc[lambda x : x > 4].unique()  # we will consider a user if they  
+interactions = interactions[interactions["user_id"].isin(good)]               # have more than 4 occurances
 ```
 
 
