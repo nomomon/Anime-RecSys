@@ -208,11 +208,11 @@ In our anime dataset we don't have a positive-negative interaction column, but w
 
 ```python
 def transform(df):
-    df.loc[df["watching_status"] == 6, ["watching_status"]] = 1.0  # Plan to watch
-    df.loc[df["watching_status"] == 2, ["watching_status"]] = 1.0  # Completed
     df.loc[df["watching_status"] == 1, ["watching_status"]] = 0.5  # Currently watching
+    df.loc[df["watching_status"] == 2, ["watching_status"]] = 1.0  # Completed
     df.loc[df["watching_status"] == 3, ["watching_status"]] = 0.5  # On hold
     df.loc[df["watching_status"] == 4, ["watching_status"]] = 0.0  # Dropped
+    df.loc[df["watching_status"] == 6, ["watching_status"]] = 1.0  # Plan to watch
 
     df.rename(columns = {'watching_status': 'interaction'}, inplace = True)
 ```
