@@ -1,8 +1,8 @@
 ![banner](/images/banner.png)
 
-Goal of this repo is to document the development of user-item recommendation systems, and compare different methods. Dataset used is [Anime Recommendation Database 2020](https://www.kaggle.com/hernan4444/anime-recommendation-database-2020) from Kaggle.
+<!-- [![](https://img.shields.io/badge/-Models-157aba?style=flat&logo=Google%20Drive&logoColor=white&labelColor=5c5c5c)](https://drive.google.com/drive/folders/1lUwT4v3Uji4JCMmjU4_qEpBQ2yl8HrYc) -->
 
-<!-- Trained model weights can be downloaded from [Drive](https://drive.google.com/drive/folders/1lUwT4v3Uji4JCMmjU4_qEpBQ2yl8HrYc) -->
+Goal of this repo is to document the development of user-item recommendation systems, and compare different methods. Dataset used is [Anime Recommendation Database 2020](https://www.kaggle.com/hernan4444/anime-recommendation-database-2020) from Kaggle.
 
 There are two most common ways of making recommending:
 - **Colaborative filtering** – methods of making predictions about the interests of a user by collecting preferences or taste information from many users.
