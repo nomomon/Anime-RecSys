@@ -235,10 +235,15 @@ interactions = interactions[interactions["user_id"].isin(good)]               # 
 
 (IMHO) A model that has multiple tasks can perform better because of more diverse data.  We can make a predictor that will achive both tasks, predict user-item ratings and interactions.
 
+<p align="center">
+ <img height="300" src="/images/hybrid neural network.png"/>
+</p>
+
+
 As it has two tasks, model loss function will be the sum of two loss functions for each task multiplied by importance weights.
 
 <p align="center">
- <img height="32" src="https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7D%20%5Cbg_white%20%5Chuge%20J%20%3D%20%5Clambda_1%20J_%7B%20_%5Ctext%7BMSE%7D%7D&plus;%20%5Clambda_2%20J_%7B%20_%5Ctext%7BBiCrossentropy%7D%7D" />
+ <img height="32" src="https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7D%20%5Cbg_white%20%5Chuge%20J%20%3D%20%5Clambda_1%20J_%7B%20_%5Ctext%7BRating%7D%7D&plus;%20%5Clambda_2%20J_%7B%20_%5Ctext%7BInteraction%7D%7D" />
 </p>
 
 ### Model
