@@ -233,7 +233,65 @@ interactions = interactions[interactions["user_id"].isin(good)]               # 
 [![](https://img.shields.io/badge/-Open%20in%20GitHub-157aba?style=flat&logo=GitHub&logoColor=white&labelColor=5c5c5c)](/User_Anime_Hybrid_Predictions.ipynb)
 [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nomomon/anime-recommendations/blob/master/User_Anime_Hybrid_Predictions.ipynb)
 
-IMHO, a model that can do multiple tasks can perform them on a similar level, if not better.
+(IMHO) A model that has multiple tasks can perform better because of more diverse data.  We can make a predictor that will achive both tasks, predict user-item ratings and interactions. 
+
+### Model
+
+<details>
+<summary><b>Making the tf.keras.Model</b></summary>
+
+Model structure is similar to Neural Networs used for rating and interaction predictions, however now it has both outputs (`dense2` and `dense3` layers).
+ 
+```python
+class HybridNeuralNetworkModel(tf.keras.Model):
+    def __init__(self, num_users, num_items, embedding_dim):
+        super(HybridNeuralNetworkModel, self).__init__()
+        
+        self.embedding_dim = embedding_dim
+        
+        self.user_embeddings = tf.keras.layers.Embedding(num_users, embedding_dim)
+        self.item_embeddings = tf.keras.layers.Embedding(num_items, embedding_dim)
+
+        self.dense1 = tf.keras.layers.Dense(64, activation='relu')
+        self.dense2 = tf.keras.layers.Dense(1, activation='relu')
+        
+        self.dense3 = tf.keras.layers.Dense(1, activation='sigmoid')
+
+        self.concat = tf.keras.layers.Concatenate()
+        self.dropout = tf.keras.layers.Dropout(.5)
+
+    def call(self, inputs, training = False):
+        ...
+```
+In output scence it is also similar, except now it returns two outputs.
+ 
+```python
+class HybridNeuralNetworkModel(tf.keras.Model):
+    def __init__(self, num_users, num_items, embedding_dim):
+        ...
+    def call(self, inputs, training = False):
+        user_ids = inputs[:, 0]
+        item_ids = inputs[:, 1]
+
+        user_embedding = self.user_embeddings(user_ids)
+        item_embedding = self.item_embeddings(item_ids)
+
+        if training:
+            user_embedding = self.dropout(user_embedding, training = training)
+            item_embedding = self.dropout(item_embedding, training = training)
+
+        user_embedding = tf.reshape(user_embedding, [-1, self.embedding_dim])
+        item_embedding = tf.reshape(item_embedding, [-1, self.embedding_dim])
+
+        conc = self.concat([user_embedding, item_embedding])
+        x = self.dense1(conc)
+        
+        x1 = self.dense2(x)
+        x2 = self.dense3(x)
+
+        return x1, x2
+```
+</details>
 
 
 ## Comparing Model Performances
