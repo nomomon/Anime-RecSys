@@ -298,6 +298,8 @@ class HybridNeuralNetworkModel(tf.keras.Model):
         return x1, x2
 ```
  
+Each output will have its own loss function defined, as well as evaluation metrics. Lambda values in the formula above are configured in the `loss_weights`.
+
 ```python
 hnn_model = HybridNeuralNetworkModel(num_users = num_users, 
                                      num_items = num_anime, 
