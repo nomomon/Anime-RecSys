@@ -232,14 +232,14 @@ IMHO, a model that can do multiple tasks can perform them on a similar level, if
 
 | Model                | val_loss | RMSE   |
 |----------------------|----------|--------|
-| Neural Network       | 1.9271   | 1.3882 |
 | Hybrid NN            | 1.9339   | 1.3906 |
-| Matrix Factorization | 3.0598   | 1.7492 |
+| Neural Network       | 1.9897   | 1.4105 |
+| Matrix Factorization | 2.8429   | 1.6861 |
 
 ### Predicting Interactions
 
-| Model                | val_loss | RMSE   |
-|----------------------|----------|--------|
-| Hybrid NN            | 0.1156   | 0.1664 |
-| Neural Network       | 0.2502   | 0.2189 |
-| Matrix Factorization | 0.2795   | 0.2306 |
+| Model                | val_loss | Acc    | Precision | Recall |
+|----------------------|----------|--------|-----------|--------|
+| Hybrid NN            |          |        |           |        |
+| Neural Network       | 0.2502   | 0.8050 | 0.8907    | 0.8282 |
+| Matrix Factorization | 0.4691   | 0.7678 | 0.8969    | 0.7621 |
