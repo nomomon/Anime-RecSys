@@ -1,6 +1,7 @@
 ![banner](/images/banner.png)
 
 [![](https://img.shields.io/badge/-Open%20Drive-4285F4?style=flat&logo=Google%20Drive&logoColor=white&labelColor=5c5c5c)](https://drive.google.com/drive/folders/1lUwT4v3Uji4JCMmjU4_qEpBQ2yl8HrYc)
+[![license](https://img.shields.io/github/license/nomomon/Anime-RecSys)](/LICENSE)
 
 Goal of this repo is to document the development of user-item recommendation systems, and compare different methods. Dataset used is [Anime Recommendation Database 2020](https://www.kaggle.com/hernan4444/anime-recommendation-database-2020) from Kaggle. All the models can be downloaded from the Drive.
 
