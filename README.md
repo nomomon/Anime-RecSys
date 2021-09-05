@@ -242,7 +242,7 @@ IMHO, a model that can do multiple tasks can perform them on a similar level, if
 
 | Model                | val_loss | RMSE   |
 |----------------------|----------|--------|
-| Hybrid NN            | 1.9339   | 1.3906 |
+| Hybrid NN            | 1.9694   | 1.4034 |
 | Neural Network       | 1.9897   | 1.4105 |
 | Matrix Factorization | 2.8429   | 1.6861 |
 
@@ -250,6 +250,6 @@ IMHO, a model that can do multiple tasks can perform them on a similar level, if
 
 | Model                | val_loss | Acc    | Precision | Recall |
 |----------------------|----------|--------|-----------|--------|
-| Hybrid NN            |          |        |           |        |
+| Hybrid NN            | 0.3079   | 0.8790 | 0.8931    | 0.9759 |
 | Neural Network       | 0.2502   | 0.8050 | 0.8907    | 0.8282 |
 | Matrix Factorization | 0.4691   | 0.7678 | 0.8969    | 0.7621 |
