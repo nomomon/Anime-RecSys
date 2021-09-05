@@ -291,6 +291,35 @@ class HybridNeuralNetworkModel(tf.keras.Model):
 
         return x1, x2
 ```
+ 
+```python
+hnn_model = HybridNeuralNetworkModel(num_users = num_users, 
+                                     num_items = num_anime, 
+                                     embedding_dim = 64)
+
+hnn_model.compile(
+    optimizer = tf.keras.optimizers.Adam(),
+    loss = {
+        "output_1": tf.keras.losses.MeanSquaredError(),
+        "output_2": tf.keras.losses.BinaryCrossentropy()
+    },
+    loss_weights = {
+        "output_1": 1.0,
+        "output_2": 5.0
+    },
+    metrics = {
+        "output_1": [
+            tf.keras.metrics.RootMeanSquaredError("RMSE")
+        ],
+        "output_2": [
+            tf.keras.metrics.BinaryAccuracy("Acc"),
+            tf.keras.metrics.Precision(name = "P"),
+            tf.keras.metrics.Recall(name = "R")
+        ]
+    },
+    run_eagerly = True
+)
+```
 </details>
 
 
